@@ -61,7 +61,7 @@ sudo su $APPUSERNAME
 cd ~
 mkdir logs
 https://github.com/mjirik/gbmseg.git
-conda env create -n gbmseg -f gbmseg/environment.yml
+conda create -n gbmseg -c conda-forge -c mjirik -y --file gbmseg/requirements_auto.txt
 pip install gdown
 gdown https://drive.google.com/uc?id=1yjXluRB8Y8N1e5wG6h2WyhVXHnZvKxBU
 unzip deploy.zip
@@ -73,6 +73,8 @@ exit
 cd /home/gbmseg_dotnet
 sudo cp gbmseg/deploy_confs/supervisor/*.conf /etc/supervisor/conf.d/
 sudo cp gbmseg/deploy_confs/nginx/* /etc/sup
+cp gbmseg/deploy_confs/bin/gbm_api_start bin/
+chmod gu+x bin/gbm_api_start
 ```
 
 Update `supervisor`:

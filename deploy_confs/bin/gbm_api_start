@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NAME="scaffanweb_app"                                  # Name of the application
+NAME="gbmseg_api"                                  # Name of the application
 DOTNETDIR=/home/gbmseg_dotnet/deploy/gbm_api            # Dotnet project directory
 # SOCKFILE=/webapps/scaffanweb_django/run/gunicorn.sock  # we will communicte using this unix socket
 USER=scaffanweb                                        # the user to run as
@@ -12,6 +12,7 @@ CONDA_DIR=/home/gbmseg_dotnet/miniconda3/
 echo "Starting $NAME as `whoami`"
 
 # Activate the virtual environment
+echo "$CONDA_DIR/bin/activate $CONDA_ENV"
 source $CONDA_DIR/bin/activate $CONDA_ENV
 # conda activate $CONDA_ENV
 # export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
