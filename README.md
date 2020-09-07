@@ -28,10 +28,12 @@ sudo chmod -R g+w /webapps/gbmseg_dotnet/
 
 * imagemagick is required by conda maybe it is not necessary
 
+[Install with snap](https://docs.microsoft.com/cs-cz/dotnet/core/install/linux-ubuntu#apt-troubleshooting)
 
 ```bash
 sudo apt-get install snapd graphicsmagick-imagemagick-compat
-sudo snap install dotnet-runtime-31
+sudo snap install dotnet-sdk --classic --channel=3.1
+sudo snap alias dotnet-sdk.dotnet dotnet
 ```
 
 ```bash
@@ -45,7 +47,7 @@ miniconda3/bin/conda init
 exit
 ```
 
-## Get the project dir
+## Get the project dir and other specific things
 
 ```bash
 sudo su $APPUSERNAME
@@ -55,5 +57,10 @@ sudo su $APPUSERNAME
 cd ~
 https://github.com/mjirik/gbmseg.git
 pip install gdown
+gdown https://drive.google.com/uc?id=1yjXluRB8Y8N1e5wG6h2WyhVXHnZvKxBU
+unzip deploy.zip
+
+conda env create -n gbmseg -f gbmseg/environment.yml
+
 ```
 
