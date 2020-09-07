@@ -16,10 +16,10 @@ Tested on Ubuntu 20.4 (LTS)
 ## Prepare user account
 
 ```bash
-$APPUSERNAME=gbmseg
-sudo useradd --system --gid webapps --home /webapps/gbmseg_dotnet gbmseg
+APPUSERNAME=gbmseg
+APPDIR="/home/$APPUSERNAME_dotnet"
+sudo useradd --system --gid webapps --home /webapps/gbmseg_dotnet --shell /bin/bash gbmseg
 sudo mkdir /webapps/gbmseg_dotnet
-sudo usermod --shell /bin/bash gbmseg
 sudo chown -R gbmseg:users /webapps/gbmseg_dotnet/
 sudo chmod -R g+w /webapps/gbmseg_dotnet/
 ```
@@ -55,12 +55,23 @@ sudo su $APPUSERNAME
 
 ```bash
 cd ~
+mkdir logs
 https://github.com/mjirik/gbmseg.git
 pip install gdown
 gdown https://drive.google.com/uc?id=1yjXluRB8Y8N1e5wG6h2WyhVXHnZvKxBU
 unzip deploy.zip
-
 conda env create -n gbmseg -f gbmseg/environment.yml
+exit
+```
 
+```bash
+sudo cp gbmseg/deploy_confs/supervisor/*.conf /etc/supervisor/conf.d/
+```
+
+Update `supervisor`:
+
+```bash
+sudo supervisorctl reread
+sudo supervisorctl update
 ```
 
