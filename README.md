@@ -75,7 +75,8 @@ cd /home/gbmseg_dotnet
 sudo cp gbmseg/deploy_confs/supervisor/*.conf /etc/supervisor/conf.d/
 sudo cp gbmseg/deploy_confs/nginx/* /etc/nginx/sites-available/
 # cp gbmseg/deploy_confs/bin/gbm_api_start bin/
-chmod gu+x bin/gbm_api_start
+# chmod gu+x bin/gbm_api_start
+sudo ln -s /etc/nginx/sites-available/gbmseg /etc/nginx/sites-enabled/gbmseg
 ```
 
 Update `supervisor`:
@@ -84,6 +85,7 @@ Update `supervisor`:
 sudo supervisorctl reread
 sudo supervisorctl update
 sudo supervisorctl start all
+sudo service nginx restart
 ```
 
 
