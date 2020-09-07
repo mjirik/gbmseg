@@ -66,14 +66,15 @@ pip install gdown
 gdown https://drive.google.com/uc?id=1yjXluRB8Y8N1e5wG6h2WyhVXHnZvKxBU
 unzip deploy.zip
 sed -i -e 's/fhacha/gbmseg_dotnet/'g deploy/gbm_api/appsettings.json
+sed -i -e 's/fhacha/gbmseg_dotnet/'g deploy/gbm_python/settings.json
 exit
 ```
 
 ```bash
 cd /home/gbmseg_dotnet
 sudo cp gbmseg/deploy_confs/supervisor/*.conf /etc/supervisor/conf.d/
-sudo cp gbmseg/deploy_confs/nginx/* /etc/sup
-cp gbmseg/deploy_confs/bin/gbm_api_start bin/
+sudo cp gbmseg/deploy_confs/nginx/* /etc/nginx/sites-available/
+# cp gbmseg/deploy_confs/bin/gbm_api_start bin/
 chmod gu+x bin/gbm_api_start
 ```
 
