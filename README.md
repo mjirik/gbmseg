@@ -49,22 +49,28 @@ exit
 
 ## Get the project dir and other specific things
 
+* download all code dirs
+* change the path from `fhacha` to `gbmseg_dotnet`
+
 ```bash
 sudo su $APPUSERNAME
 ```
+
 
 ```bash
 cd ~
 mkdir logs
 https://github.com/mjirik/gbmseg.git
+conda env create -n gbmseg -f gbmseg/environment.yml
 pip install gdown
 gdown https://drive.google.com/uc?id=1yjXluRB8Y8N1e5wG6h2WyhVXHnZvKxBU
 unzip deploy.zip
-conda env create -n gbmseg -f gbmseg/environment.yml
+sed -i -e 's/fhacha/gbmseg_dotnet/'g deploy/gbm_api/appsettings.json
 exit
 ```
 
 ```bash
+cd /home/gbmseg_dotnet
 sudo cp gbmseg/deploy_confs/supervisor/*.conf /etc/supervisor/conf.d/
 ```
 
@@ -73,5 +79,8 @@ Update `supervisor`:
 ```bash
 sudo supervisorctl reread
 sudo supervisorctl update
+sudo supervisorctl start all
 ```
+
+
 
