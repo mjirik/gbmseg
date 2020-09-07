@@ -72,6 +72,7 @@ exit
 ```bash
 cd /home/gbmseg_dotnet
 sudo cp gbmseg/deploy_confs/supervisor/*.conf /etc/supervisor/conf.d/
+sudo cp gbmseg/deploy_confs/nginx/* /etc/sup
 ```
 
 Update `supervisor`:
