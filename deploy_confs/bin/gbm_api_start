@@ -6,9 +6,7 @@ DOTNETDIR=/home/gbmseg_dotnet/deploy/gbm_api            # Dotnet project directo
 USER=scaffanweb                                        # the user to run as
 GROUP=webapps                                     # the group to run as
 NUM_WORKERS=3                                     # how many worker processes should Gunicorn spawn
-DJANGO_SETTINGS_MODULE=scaffanweb.settings             # which settings file should Django use
-DJANGO_WSGI_MODULE=scaffanweb.wsgi                     # WSGI module name
-CONDA_ENV=scaffanweb
+CONDA_ENV=gbmseg
 CONDA_DIR=/home/gbmseg_dotnet/miniconda3/
 
 echo "Starting $NAME as `whoami`"
