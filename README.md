@@ -51,6 +51,7 @@ exit
 
 * download all code dirs
 * change the path from `fhacha` to `gbmseg_dotnet`
+* set the resolution
 
 ```bash
 sudo su $APPUSERNAME
@@ -67,6 +68,7 @@ gdown https://drive.google.com/uc?id=1yjXluRB8Y8N1e5wG6h2WyhVXHnZvKxBU
 unzip deploy.zip
 sed -i -e 's/fhacha/gbmseg_dotnet/'g deploy/gbm_api/appsettings.json
 sed -i -e 's/fhacha/gbmseg_dotnet/'g deploy/gbm_python/settings.json
+sed -i -e 's/"measurement_rate": 1,/"measurement_rate": 0.00381679389,/'g deploy/gbm_python/settings.json
 exit
 ```
 
@@ -79,7 +81,10 @@ sudo cp gbmseg/deploy_confs/nginx/* /etc/nginx/sites-available/
 sudo ln -s /etc/nginx/sites-available/gbmseg /etc/nginx/sites-enabled/gbmseg
 ```
 
-Update `supervisor`:
+## Start
+
+
+Update `supervisor` and restart `nginx`:
 
 ```bash
 sudo supervisorctl reread
