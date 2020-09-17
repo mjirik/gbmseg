@@ -1,0 +1,20 @@
+{
+  "csv_file_path": "D:\\Projects\\GBM\\Source\\GBM\\data\\via_export_csv.csv",
+  "images_dir_path": "D:\\Projects\\GBM\\Data\\GBM_measurement_3000x_2020-04-03",
+  "dataset_path": "D:\\Projects\\GBM\\Source\\GBM\\data\\dataset.h5",
+  "current_state_path": "D:\\Projects\\GBM\\Source\\GBM\\data\\current_state.txt",
+  "img_width": 256,
+  "img_height": 256,
+  "img_xstep": 64,
+  "img_ystep": 64,
+  "img_padding": 5,
+  "model_path": "D:\\Projects\\GBM\\Source\\GBM\\data\\model.json",
+  "weights_path": "D:\\Projects\\GBM\\Source\\GBM\\data\\model.h5",
+  "epochs_count": 5,
+  "max_job_images": 1,
+  "max_job_epochs": 1,
+  "measurement_rate": 1,
+  "measurement_threshold": 0.5,
+  "min_membrane_size": 5,
+  "max_membrane_size": 256
+}

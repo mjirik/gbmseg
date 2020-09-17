@@ -1,0 +1,72 @@
+﻿@page "/"
+
+@using GBMWeb.Api.Models
+@using GBMWeb.Client.Data
+@using System.Web
+@using GBMWeb.Data.Models
+@using GBMWeb.Shared
+@inject MeasureTaskService TaskService
+@inject NavigationManager NavigationManager
+
+<h1>GBM Tasks</h1>
+
+@if (tasks == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Created</th>
+                <th>Status</th>
+                <th>Output Metrics</th>
+                <th>Input image</th>
+                <th>Output image</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var task in tasks)
+            {
+            <tr>
+                <td>@task.Id.ToString()</td>
+                <td>@task.CreatedAt.ToString()</td>
+                <td>@task.Status.ToString()</td>
+                <td>@task.OutputMetrics</td>
+                <td>
+                    @if (task.Status == MeasureTaskStatus.Finished)
+                    {
+                        <a href="@ApplicationContext.Current.Configuration["Services:MeasureTask"]/input_image?id=@task.Id.ToString().ToLower()">Input image</a>
+                    }
+                </td>
+                <td>
+                    @if (task.Status == MeasureTaskStatus.Finished)
+                    {
+                        <a href="@ApplicationContext.Current.Configuration["Services:MeasureTask"]/output_image?id=@task.Id.ToString().ToLower()">Output image</a>
+                    }
+                </td>
+                <td><a href="@ApplicationContext.Current.Configuration["Services:MeasureTask"]/delete?redirect_uri=@HttpUtility.UrlEncode(NavigationManager.Uri)&id=@task.Id.ToString().ToLower()">Delete</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    <h1>Upload file</h1>
+
+    <form action="@ApplicationContext.Current.Configuration["Services:MeasureTask"]/create?redirect_uri=@HttpUtility.UrlEncode(NavigationManager.Uri)" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="file">
+        <input type="submit" value="Upload Image" name="submit">
+    </form>
+}
+
+@code {
+    private IList<MeasureTaskInfo> tasks;
+
+    protected override async Task OnInitializedAsync()
+    {
+        tasks = TaskService.GetTasks();
+    }
+}

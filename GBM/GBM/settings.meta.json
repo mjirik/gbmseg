@@ -1,0 +1,16 @@
+{
+  "csv_file_path": "",
+  "images_dir_path": "",
+  "dataset_path": "/storage/plzen1/home/hachaf/data/dataset.h5",
+  "current_state_path": "/storage/plzen1/home/hachaf/data/current_state.txt",
+  "img_width": 256,
+  "img_height": 256,
+  "img_xstep": 64,
+  "img_ystep": 64,
+  "img_padding": 5,
+  "model_path": "/storage/plzen1/home/hachaf/data/model.json",
+  "weights_path": "/storage/plzen1/home/hachaf/data/model.h5",
+  "epochs_count": 5,
+  "max_job_images": 1,
+  "max_job_epochs": 1
+}
